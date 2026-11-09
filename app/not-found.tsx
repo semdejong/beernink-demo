@@ -8,12 +8,22 @@ export const metadata: Metadata = {
 };
 
 export default function NotFound() {
-  const { contact } = content;
+  const { contact, services } = content;
   return (
-    <section data-section="niet-gevonden" className="mx-auto w-full max-w-[1120px] px-5 py-20">
+    <section data-section="niet-gevonden" className="mx-auto w-full max-w-[1120px] px-5 py-16">
       <h1>Deze pagina bestaat niet</h1>
-      <p className="mt-4 max-w-[36rem]">Het adres klopt niet op dit concept. Ga terug naar het begin of neem contact op.</p>
-      <p className="mt-6 flex flex-col gap-3 sm:flex-row">
+      <p className="mt-4 max-w-[36rem]">Het adres klopt niet op dit concept. Kies hieronder een onderdeel, of bel ons.</p>
+      <ul className="mt-8 max-w-md border-t border-navy/25">
+        {services.map((service) => (
+          <li key={service.href} className="border-b border-navy/25">
+            <Link href={service.href} className="link inline-flex min-h-11 items-center font-semibold">{service.title}</Link>
+          </li>
+        ))}
+        <li className="border-b border-navy/25">
+          <Link href="/projecten" className="link inline-flex min-h-11 items-center font-semibold">Projecten</Link>
+        </li>
+      </ul>
+      <p className="mt-8 flex flex-col gap-3 sm:flex-row">
         <Link href="/" className="btn btn-primary">Naar home</Link>
         <a href={contact.phoneTel} data-cta="bellen" className="btn btn-secondary">Bel {contact.phoneDisplay}</a>
       </p>

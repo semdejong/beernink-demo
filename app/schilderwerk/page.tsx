@@ -61,10 +61,26 @@ export default function SchilderwerkPage() {
           </div>
         </section>
 
-        <section data-section="spuitwerk" aria-labelledby="spuit-titel">
+        <section data-section="spuitwerk" aria-labelledby="spuit-titel" className="border border-navy bg-cream p-6 md:p-10">
           <h2 id="spuit-titel">Airless en spuitwerk op waterbasis</h2>
           <p className="mt-4 max-w-[42rem]">
             Naast vakkundig schilderwerk hebben we ook ervaring met het airless spuiten van grote oppervlakken, en het spuiten van kozijnen, deuren en radiatoren met verf op waterbasis.
+          </p>
+          <ul className="marks mt-4 max-w-[42rem]">
+            <li>airless spuiten van grote oppervlakken</li>
+            <li>kozijnen, deuren en radiatoren</li>
+            <li>verf op waterbasis</li>
+          </ul>
+        </section>
+
+        <section data-section="werkwijze" aria-labelledby="werkwijze-titel">
+          <h2 id="werkwijze-titel">Zo ging het bij Te Hietbrink</h2>
+          <p className="mt-4 max-w-[42rem]">Klassiek woonhuis te Winterswijk. Het grenen houtwerk en de gestucte wanden zijn daar als volgt aangepakt.</p>
+          <ol className="years mt-6 max-w-[40rem]">
+            {content.details["te-hietbrink"].steps?.map((step) => <li key={step}>{step}</li>)}
+          </ol>
+          <p className="mt-4">
+            <Link href="/projecten/te-hietbrink" className="link font-semibold">Bekijk Te Hietbrink</Link>
           </p>
         </section>
 

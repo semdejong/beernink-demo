@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { content } from "@/content";
 import PageIntro from "@/components/PageIntro";
 
@@ -16,17 +17,32 @@ export default function PrivacyPage() {
         lede="Dit is een conceptwebsite voor Schildersbedrijf Beernink. De pagina’s worden niet door zoekmachines geïndexeerd."
         crumbs={[{ label: "Privacy" }]}
       />
-      <div data-section="privacy" className="mx-auto w-full max-w-[1120px] space-y-4 px-5 py-12">
-        <p className="max-w-[42rem]">
-          Een offerteverzoek opent uw eigen e-mailprogramma. Dit concept slaat het formulier niet op een server op en bevestigt geen verzending. Het bericht vertrekt pas als u het zelf verstuurt.
-        </p>
-        <p className="max-w-[42rem]">
-          Op deze conceptsite staat een cookieloos meetpunt van Sleads, alleen om het concept te kunnen beoordelen.
-        </p>
-        <h2>Gegevens van het bedrijf</h2>
-        <p className="max-w-[42rem]">
-          {company.name}, {contact.street}, {contact.postalCode} {contact.city}. Telefoon {contact.phoneDisplay}. E-mail {contact.email}. {contact.kvk}. {contact.btw}.
-        </p>
+      <div data-section="privacy" className="mx-auto grid w-full max-w-[1120px] gap-10 px-5 py-12 md:grid-cols-3">
+        <section aria-labelledby="formulier-titel">
+          <h2 id="formulier-titel" className="text-[2rem]">Het formulier</h2>
+          <p className="mt-3">
+            Een offerteverzoek opent uw eigen e-mailprogramma. Dit concept slaat het formulier niet op een server op en bevestigt geen verzending. Het bericht vertrekt pas als u het zelf verstuurt.
+          </p>
+        </section>
+        <section aria-labelledby="meten-titel">
+          <h2 id="meten-titel" className="text-[2rem]">Meten</h2>
+          <p className="mt-3">
+            Op deze conceptsite staat een cookieloos meetpunt van Sleads, alleen om het concept te kunnen beoordelen.
+          </p>
+        </section>
+        <section aria-labelledby="bedrijf-titel">
+          <h2 id="bedrijf-titel" className="text-[2rem]">Het bedrijf</h2>
+          <p className="mt-3">
+            {company.name}, {contact.street}, {contact.postalCode} {contact.city}. Telefoon{" "}
+            <a className="link font-semibold" href={contact.phoneTel} data-cta="bellen">{contact.phoneDisplay}</a>.
+            E-mail{" "}
+            <a className="link font-semibold" href={`mailto:${contact.email}`} data-cta="mailen">{contact.email}</a>.
+            {" "}{contact.kvk}. {contact.btw}.
+          </p>
+          <p className="mt-4">
+            <Link href="/contact" className="link font-semibold">Naar contact</Link>
+          </p>
+        </section>
       </div>
     </>
   );

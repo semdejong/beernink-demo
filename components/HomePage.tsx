@@ -4,6 +4,7 @@ import { Frame } from "@/components/Frame";
 import CtaPair from "@/components/CtaPair";
 import ColourBoard from "@/components/ColourBoard";
 import FaqList from "@/components/FaqList";
+import WorkRegister from "@/components/WorkRegister";
 
 export default function HomePage() {
   const { company, contact, services, colours, projects, promises, houtrot, premises, faqs } = content;
@@ -60,8 +61,8 @@ export default function HomePage() {
           Schilderwerk, wandafwerking, beglazing en kleuradvies. U herkent het werk en belt of mailt voor een vrijblijvende offerte.
         </p>
         <div className="mt-8 border-t border-navy/25">
-          {services.map((service) => (
-            <article key={service.href} className="grid items-center gap-6 border-b border-navy/25 py-8 md:grid-cols-2 md:gap-10">
+          {services.map((service, index) => (
+            <article key={service.href} className={`grid items-center gap-6 border-b border-navy/25 py-8 md:grid-cols-2 md:gap-10 ${index % 2 === 1 ? "md:[&>*:first-child]:order-2" : ""}`}>
               <div>
                 <h3 className="font-display text-4xl font-semibold text-navy md:text-5xl">{service.title}</h3>
                 <p className="mt-3 max-w-[38rem]">{service.text}</p>
@@ -92,6 +93,18 @@ export default function HomePage() {
           </div>
           <p className="mt-6">
             <Link href="/kleuren" className="link font-semibold">Alle twaalf kleuren en advies</Link>
+          </p>
+        </div>
+      </section>
+
+      <section data-section="citaat" className="border-y border-navy/20">
+        <div className="mx-auto grid w-full max-w-[1120px] gap-6 px-5 py-14 md:grid-cols-[minmax(0,1fr)_16rem] md:items-end">
+          <blockquote className="pull">
+            De gehele buitenzijde is door ons geschilderd waarbij voor de muren een authentieke kleur mergelwit is gekozen.
+          </blockquote>
+          <p>
+            Villa Flora<br />
+            Wilhelminastraat, Winterswijk
           </p>
         </div>
       </section>
@@ -143,6 +156,12 @@ export default function HomePage() {
           {glas.image ? <div className="mt-5"><Frame photo={glas.image} sizes="(min-width: 768px) 46vw, 100vw" /></div> : null}
           <p className="mt-4"><Link href="/beglazing" className="link font-semibold">Naar beglazing</Link></p>
         </div>
+      </section>
+
+      <section data-section="werkregister" className="mx-auto w-full max-w-[1120px] px-5 pb-16" aria-labelledby="register-titel">
+        <h2 id="register-titel">Het werk in het kort</h2>
+        <p className="mt-3 mb-6 max-w-[40rem]">Buiten en binnen, met de namen van het pand of de familie. De foto’s staan op de projectpagina.</p>
+        <WorkRegister projects={projects} />
       </section>
 
       <section data-section="winterkorting" className="bg-navy text-cream" aria-labelledby="winter-titel">

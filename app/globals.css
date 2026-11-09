@@ -264,6 +264,38 @@ textarea.field {
   background: var(--red);
 }
 
+.pull {
+  font-family: var(--font-display);
+  font-style: normal;
+  font-weight: 600;
+  font-size: clamp(1.8rem, 3.4vw, 2.8rem);
+  line-height: 1.16;
+  color: var(--navy);
+  max-width: 22ch;
+}
+
+.years {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0 1.35rem;
+  border-left: 1px solid var(--navy);
+}
+
+.years li {
+  position: relative;
+  padding: 0 0 1.15rem 0.85rem;
+}
+
+.years li::before {
+  content: "";
+  position: absolute;
+  left: -1.58rem;
+  top: 0.45rem;
+  width: 0.45rem;
+  height: 0.45rem;
+  background: var(--red);
+}
+
 .double-rule {
   height: 5px;
   border: 0;

@@ -17,6 +17,15 @@ export type Colour = {
   name: string;
   src: string;
   featured?: boolean;
+  note?: string;
+};
+
+export type ProjectDetail = {
+  place?: string;
+  scope: "Buitenwerk" | "Binnenwerk";
+  serviceHref: string;
+  serviceLabel: string;
+  steps?: string[];
 };
 
 export type Project = {
@@ -148,7 +157,12 @@ export const content = {
     { name: "Rijtuigengroen", src: "/img/sikkens-rijtuigengroen.png", featured: true },
     { name: "Monumentengroen", src: "/img/sikkens-monumentengroen.png", featured: true },
     { name: "Grachtengroen", src: "/img/siikkens-grachtengroen.png", featured: true },
-    { name: "Mergelwit", src: "/img/sikkens-mergelwit.png", featured: true },
+    {
+      name: "Mergelwit",
+      src: "/img/sikkens-mergelwit.png",
+      featured: true,
+      note: "Deze kleur is gekozen voor de muren van Villa Flora aan de Wilhelminastraat te Winterswijk.",
+    },
     { name: "Bentheimergeel", src: "/img/sikkens-bentheimergeel.png", featured: true },
     { name: "Zandsteengeel", src: "/img/sikkens-zandsteengeel.png" },
     { name: "Okergeel", src: "/img/sikkens-okergeel.png" },
@@ -352,6 +366,69 @@ export const content = {
     },
   ] satisfies Project[],
 
+  details: {
+    "villa-flora": {
+      place: "Wilhelminastraat, Winterswijk",
+      scope: "Buitenwerk",
+      serviceHref: "/schilderwerk",
+      serviceLabel: "Schilderwerk",
+    },
+    "te-hietbrink": {
+      place: "Winterswijk",
+      scope: "Binnenwerk",
+      serviceHref: "/schilderwerk",
+      serviceLabel: "Schilderwerk",
+      steps: [
+        "Het grenen houtwerk is geheel schoongekrabd met behulp van een afbijtmiddel.",
+        "Daarna is het gegrond, geplamuurd, voorgelakt en afgelakt met verf op waterbasis.",
+        "De gestucte wanden zijn met glasvlies beplakt en daarna gesausd.",
+      ],
+    },
+    "de-duif": {
+      place: "Winterswijk",
+      scope: "Buitenwerk",
+      serviceHref: "/schilderwerk",
+      serviceLabel: "Schilderwerk",
+      steps: [
+        "Een steiger is over de luifel heen gebouwd.",
+        "De redcedar luifel heeft een transparante afwerking gekregen.",
+      ],
+    },
+    winkelpand: {
+      scope: "Buitenwerk",
+      serviceHref: "/schilderwerk",
+      serviceLabel: "Schilderwerk",
+      steps: [
+        "Het pand tijdens de werkzaamheden, in de steigers.",
+        "Hetzelfde pand na het schilderwerk.",
+      ],
+    },
+    wassink: {
+      scope: "Buitenwerk",
+      serviceHref: "/kleuren",
+      serviceLabel: "Kleuren en advies",
+      steps: [
+        "De boerderij is geschilderd in herkenbare streekkleuren.",
+        "De schuur is geschilderd met zwarte houtcoat, als vervanger voor carboleum.",
+      ],
+    },
+    hoitink: {
+      scope: "Buitenwerk",
+      serviceHref: "/schilderwerk",
+      serviceLabel: "Schilderwerk",
+    },
+    "stucwerk-plafond": {
+      scope: "Binnenwerk",
+      serviceHref: "/wandafwerking",
+      serviceLabel: "Wandafwerking",
+      steps: [
+        "Stucwerk van de muren, daarna behangen met glasvlies.",
+        "Het zachtboardplafond tussen de balken is eerst geschilderd.",
+        "Daarna is het plafond behangen met patroonbehang.",
+      ],
+    },
+  } satisfies Record<string, ProjectDetail>,
+
   houtrot: [
     photo(
       "/img/houtrot-reparatie-schildersbedrijf-beernink.jpg",
@@ -449,6 +526,10 @@ export const content = {
         q: "Waar werken jullie?",
         a: "Wij werken in Winterswijk en omstreken.",
       },
+      {
+        q: "Werkt Henk Jan Beernink zelf mee?",
+        a: "Ja. Hij is opgegroeid met het schildersvak, nam het bedrijf in 1989 over van zijn vader en werkt als schilder altijd mee. Daardoor staat hij in direct contact met de opdrachtgever.",
+      },
     ],
     schilderwerk: [
       {
@@ -516,6 +597,14 @@ export type Content = typeof content;
 
 export function getProject(slug: string) {
   return content.projects.find((project) => project.slug === slug);
+}
+
+export function detailFor(slug: string): ProjectDetail {
+  const detail = content.details[slug as keyof typeof content.details];
+  if (!detail) {
+    return { scope: "Buitenwerk", serviceHref: "/schilderwerk", serviceLabel: "Schilderwerk" };
+  }
+  return detail;
 }
 
 export function offerteMailto(email: string, subject = "Vrijblijvende offerte") {
