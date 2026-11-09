@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 import { content } from "@/content";
 import { Frame } from "@/components/Frame";
@@ -48,8 +49,9 @@ export default function HomePage() {
         <ul className="mx-auto grid w-full max-w-[1120px] md:grid-cols-3">
           {promises.map((item) => (
             <li key={item.title} className="border-navy/15 px-5 py-6 md:border-l md:first:border-l-0">
-              <p className="font-display text-3xl font-semibold text-navy">{item.title}</p>
-              <p className="mt-1">{item.text}</p>
+              <p className="min-h-[4.4rem] font-display text-[1.7rem] font-semibold leading-tight text-navy">{item.title}</p>
+              <span className="my-3 block h-px w-8 bg-red" aria-hidden="true" />
+              <p>{item.text}</p>
             </li>
           ))}
         </ul>
@@ -75,7 +77,14 @@ export default function HomePage() {
               {service.image ? (
                 <Frame photo={service.image} sizes="(min-width: 768px) 46vw, 100vw" />
               ) : (
-                <ColourBoard colours={featured.slice(0, 4)} columns="page" />
+                <ul className="border-t border-navy/30">
+                  {featured.slice(0, 4).map((colour) => (
+                    <li key={colour.name} className="grid grid-cols-[5.5rem_1fr] border-b border-navy/25">
+                      <Image src={colour.src} alt="" width={160} height={80} className="h-14 w-full object-cover" />
+                      <span className="flex items-center px-4 font-display text-2xl font-semibold text-navy">{colour.name}</span>
+                    </li>
+                  ))}
+                </ul>
               )}
             </article>
           ))}

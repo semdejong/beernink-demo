@@ -17,7 +17,7 @@ export default function PrivacyPage() {
         lede="Dit is een conceptwebsite voor Schildersbedrijf Beernink. De pagina’s worden niet door zoekmachines geïndexeerd."
         crumbs={[{ label: "Privacy" }]}
       />
-      <div data-section="privacy" className="mx-auto grid w-full max-w-[1120px] gap-10 px-5 py-12 md:grid-cols-3">
+      <div data-section="privacy" className="mx-auto grid w-full max-w-[1120px] gap-10 px-5 py-12 pb-16 md:grid-cols-3">
         <section aria-labelledby="formulier-titel">
           <h2 id="formulier-titel" className="text-[2rem]">Het formulier</h2>
           <p className="mt-3">
@@ -33,12 +33,19 @@ export default function PrivacyPage() {
         <section aria-labelledby="bedrijf-titel">
           <h2 id="bedrijf-titel" className="text-[2rem]">Het bedrijf</h2>
           <p className="mt-3">
-            {company.name}, {contact.street}, {contact.postalCode} {contact.city}. Telefoon{" "}
-            <a className="link font-semibold" href={contact.phoneTel} data-cta="bellen">{contact.phoneDisplay}</a>.
-            E-mail{" "}
-            <a className="link font-semibold" href={`mailto:${contact.email}`} data-cta="mailen">{contact.email}</a>.
-            {" "}{contact.kvk}. {contact.btw}.
+            {company.name}<br />
+            {contact.street}<br />
+            {contact.postalCode} {contact.city}
           </p>
+          <p className="mt-3">
+            Telefoon{" "}
+            <a className="link font-semibold whitespace-nowrap" href={contact.phoneTel} data-cta="bellen">{contact.phoneDisplay}</a>
+          </p>
+          <p>
+            E-mail{" "}
+            <a className="link font-semibold break-words" href={`mailto:${contact.email}`} data-cta="mailen">{contact.email}</a>
+          </p>
+          <p className="mt-3">{contact.kvk}<br />{contact.btw}</p>
           <p className="mt-4">
             <Link href="/contact" className="link font-semibold">Naar contact</Link>
           </p>

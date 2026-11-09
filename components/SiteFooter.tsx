@@ -5,7 +5,7 @@ export default function SiteFooter() {
   const { company, contact, services } = content;
   return (
     <footer data-section="footer" className="border-t border-navy/20 bg-warm">
-      <div className="mx-auto grid w-full max-w-[1120px] gap-8 px-5 py-10 pb-28 md:grid-cols-3 md:pb-12">
+      <div className="mx-auto grid w-full max-w-[1120px] gap-8 px-5 py-10 pb-36 md:grid-cols-3 md:pb-24">
         <div>
           <p className="font-display text-3xl font-semibold text-navy">{company.name}</p>
           <p className="mt-2">Familiebedrijf sinds {company.since}</p>

@@ -5,6 +5,7 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { content } from "@/content";
+import SleadsBadge from "@/components/SleadsBadge";
 
 function isCurrent(pathname: string, href: string) {
   return pathname === href || pathname.startsWith(`${href}/`);
@@ -69,6 +70,7 @@ export default function SiteHeader() {
             {item.label}
           </Link>
         ))}
+        <SleadsBadge className="ml-auto" />
       </nav>
       <nav
         id="hoofdmenu"

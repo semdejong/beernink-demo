@@ -60,9 +60,6 @@ export default function OverPage() {
         </div>
         <div>
           <Frame photo={premises} sizes="400px" className="w-full max-w-[400px]" />
-          <p className="mt-4 max-w-[400px]">
-            {content.contact.street}, {content.contact.postalCode} {content.contact.city}.
-          </p>
         </div>
       </div>
       <section data-section="werk" className="mx-auto w-full max-w-[1120px] px-5 pb-16" aria-labelledby="werk-titel">

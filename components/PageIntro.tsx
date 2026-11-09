@@ -13,7 +13,7 @@ export default function PageIntro({
   children?: ReactNode;
 }) {
   return (
-    <header data-section="intro" className="mx-auto w-full max-w-[1120px] px-5 pt-10 pb-6 md:pt-14">
+    <header data-section="intro" className="mx-auto w-full max-w-[1120px] px-5 pt-8 pb-6 md:pt-14">
       <nav aria-label="Kruimelpad" className="mb-6 text-base">
         <ol className="flex flex-wrap items-center gap-x-2 gap-y-1">
           <li>

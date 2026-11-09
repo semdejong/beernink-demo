@@ -12,11 +12,15 @@ export default function ProjectArticle({ project }: { project: Project }) {
 
   return (
     <>
-      <PageIntro title={project.title} lede={project.summary} crumbs={[{ href: "/projecten", label: "Projecten" }, { label: project.title }]}>
+      <PageIntro
+        title={project.title}
+        lede={detail.place ? `${detail.scope} · ${detail.place}` : detail.scope}
+        crumbs={[{ href: "/projecten", label: "Projecten" }, { label: project.title }]}
+      >
         <CtaPair />
       </PageIntro>
       <article data-section="project" className="mx-auto w-full max-w-[1120px] px-5 py-10">
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_15rem]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,1fr)_17rem]">
           <div className="max-w-[42rem] space-y-4">
             {project.paragraphs.map((paragraph) => (
               <p key={paragraph}>{paragraph}</p>
@@ -24,11 +28,17 @@ export default function ProjectArticle({ project }: { project: Project }) {
           </div>
           <aside className="h-fit border border-navy bg-warm p-5" aria-label="Gegevens bij dit werk">
             <p className="text-sm font-semibold tracking-[0.14em] text-navy uppercase">{detail.scope}</p>
-            {detail.place ? <p className="mt-3 font-display text-3xl leading-tight text-navy">{detail.place}</p> : null}
+            {detail.place ? (
+              <p className="mt-3 font-display text-[1.85rem] leading-tight text-navy">
+                {detail.place.split(", ").map((line) => (
+                  <span key={line} className="block">{line}</span>
+                ))}
+              </p>
+            ) : null}
             <p className="mt-4">
               <Link href={detail.serviceHref} className="link font-semibold">{detail.serviceLabel}</Link>
             </p>
-            <p className="mt-3">{project.photos.length === 1 ? "Eén foto bij dit werk." : `${project.photos.length} foto’s bij dit werk.`}</p>
+            <p className="mt-3">De opnamen staan hieronder, met het bijschrift erbij.</p>
           </aside>
         </div>
 
