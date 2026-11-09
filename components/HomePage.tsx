@@ -122,7 +122,7 @@ export default function HomePage() {
         <h2 id="villa-titel" className="max-w-[18ch]">Schilderwerk statige Villa Flora</h2>
         <p className="mt-4 max-w-[42rem]">Deze prachtige villa staat aan de Wilhelminastraat te Winterswijk.</p>
         <p className="mt-3 max-w-[42rem]">De gehele buitenzijde is door ons geschilderd waarbij voor de muren een authentieke kleur mergelwit is gekozen.</p>
-        <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)]">
+        <div className="mt-8 grid gap-8 md:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] md:items-start">
           <Frame photo={villaFront} sizes="(min-width: 768px) 55vw, 100vw" />
           <div className="grid gap-8">
             <Frame photo={door} sizes="(min-width: 768px) 30vw, 100vw" />
